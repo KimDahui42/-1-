@@ -1,0 +1,22 @@
+/*모든 페이지 적용*/
+.container{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: 150px auto 50px;
+    row-gap: 10px;
+}
+.header{
+    background: pink;
+}
+.nav{
+    background: lightyellow;
+}
+.footer{
+    grid-column-start: 1;
+    grid-column-end: 3;
+    background: lightseagreen;
+}
+/*playlist*/
+/*recommend*/
+/*community*/
+/*sign in*/
