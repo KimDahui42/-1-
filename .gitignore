@@ -3,7 +3,9 @@
 
 ### node modules ###
 /node_modules
-
+.env
+.evn
+.env.dev
 ### Eclipse ###
 .metadata
 bin/

@@ -10,10 +10,15 @@
   <div class="header" w3-include-html="statics/head.html"></div>
   <div class="nav" w3-include-html="statics/nav.html"></div>
   <main>
-    <canvas class="recommend-map">
+    <div class="recommend_search">
+      <input id="recommend_search_bar" type="text" value="" placeholder="좋아하는 노래의 제목을 입력해주세요"/>
+      <button onclick="searchSong();">search</button>
+    </div>
+    <section id="recommend_map">
 
-    </canvas>
+    </section>
   </main>
   <div class="footer" w3-include-html="statics/foot.html"></div>
+  <script src="js/recommend.js"></script>
 </body>
 </html>  
