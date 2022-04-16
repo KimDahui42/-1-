@@ -1,11 +1,20 @@
 var token="";
 var genres;
 var main_song;
-var mapCanvas=document.getElementById("recommend_map");
+var mapCanvas=document.getElementById("recommendMap");
+
+
 
 function pageInit(){
     console.log(mapCanvas);
     mapCanvas.innerHTML="";
+    document.getElementById("recommendSearchBar")
+    .addEventListener("keyup", function(event) {
+    event.preventDefault();
+    if (event.code === 'Enter') {
+        document.getElementById("recommendSearchIcon").click();
+    }
+})
 }
 const getToken=()=>{
     var request = new XMLHttpRequest();
@@ -37,7 +46,7 @@ function searchSong(){
     pageInit();
     getToken();
     var request = new XMLHttpRequest();
-    var title="q="+document.getElementById("recommend_search_bar").value;
+    var title="q="+document.getElementById("recommendSearchBar").value;
     var type="&type=track";
     var limit="&limit=1&include_external=audio";
     const options={
