@@ -6,15 +6,15 @@ var mapCanvas=document.getElementById("recommendMap");
 
 
 function pageInit(){
-    console.log(mapCanvas);
     mapCanvas.innerHTML="";
-    document.getElementById("recommendSearchBar")
-    .addEventListener("keyup", function(event) {
+}
+
+function enter(event){
     event.preventDefault();
     if (event.code === 'Enter') {
-        document.getElementById("recommendSearchIcon").click();
+        searchSong();
+        return;
     }
-})
 }
 const getToken=()=>{
     var request = new XMLHttpRequest();
@@ -45,6 +45,7 @@ const getToken=()=>{
 function searchSong(){
     pageInit();
     getToken();
+    console.log("searchSong");
     var request = new XMLHttpRequest();
     var title="q="+document.getElementById("recommendSearchBar").value;
     var type="&type=track";
@@ -102,6 +103,7 @@ function getRecommedSongs(){
     var request = new XMLHttpRequest();
     var limit="limit=20";
     getGenres(main_song["id"]);
+    console.log("getRecommend");
     const seeds={
         seed_artists:"&seed_artists="+main_song["artists"][0]["id"],
         seed_track:"&seed_tracks="+main_song["id"],
@@ -133,16 +135,38 @@ function getRecommedSongs(){
 }
 
 function drawMap(tracks){
+    console.log("drawMap");
     let main_node=document.createElement('div');
-    main_node.innerHTML="<h2>"+main_song["name"]+"</h2>";
+    main_node.innerHTML="<div>"+main_song["name"]+"</div>";
+    main_node.id=main_song["name"];
+    main_node.className="recommend_map_center";
     mapCanvas.appendChild(main_node);
     for(var key in tracks){
         let node=document.createElement('div');
         node.id=key;
+        node.innerHTML='<div class="recommend_map_node_dot"></div><div class="recommend_map_node_title"><a href="'+tracks[key]+'" target="_blank">'+key+"</a></div>";
         node.className="recommend_map_node";
-        node.innerHTML='<a href="'+tracks[key]+'">'+key+"</a>";
         mapCanvas.appendChild(node);
-        //node.appendChild(track);
+    }
+    letItStar();
+}
+
+function letItStar(){
+    let main_node=document.getElementById(main_song["name"]);
+    let nodes=document.getElementsByClassName("recommend_map_node");
+    let x=new Array(20);
+    let y=new Array(20);
+    main_node.style.position="relative";
+    main_node.style.top=Math.floor(window.innerHeight/2)-50+"px";
+    main_node.style.left=0+"px";
+    console.log("main node >> "+main_node.style.top+' ,'+main_node.style.left);
+    for(let i=0;i<20;i++){
+        x[i]=Math.floor(Math.random()*(window.innerWidth-200)-window.innerWidth/2+50);
+        y[i]=Math.floor(Math.random()*(window.innerHeight-150)-window.innerHeight/3+120);
+        nodes[i].style.position="relative";
+        nodes[i].style.top=y[i]+"px";
+        nodes[i].style.left=x[i]+"px";
+        console.log(nodes[i].style.position+': '+nodes[i].style.top+','+nodes[i].style.left);
     }
 }
 
