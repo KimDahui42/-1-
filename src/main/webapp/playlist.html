@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="styles/style.css"/>
+<link rel="stylesheet" type="text/css" href="styles/playlist.css"/>
 <script src="http://www.w3schools.com/lib/w3data.js"></script>
 <title>SPIRITFY</title>
 </head>
@@ -10,8 +11,76 @@
   <div class="header" w3-include-html="statics/head.html"></div>
   <div class="nav" w3-include-html="statics/nav.html"></div>
   <main>
-    Playlist
+    <form>
+      <input type="hidden" id="access_token">
+      <div class="box-container">
+        <div class="box">
+          <input type="radio" name="select-window" id="country" value="country" checked>
+          <label for="country">Select Country</label><br>
+          <input type="radio" name="select-window" id="genre" value="genre">
+          <label for="genre">Explore Playlist</label><br>
+          <input type="radio" name="select-window" id="search" value="search">
+          <label for="search">Search Song</label><br>
+        </div>
+
+        <div class="box" id="country-select-window">
+          <select>
+            <option value="null">현재 위치</option>
+            <option value="KR">한국</option>
+            <option value="US">미국</option>
+            <option value="JR">일본</option>
+          </select><br>
+          <label for="lat">위도 : </label>
+          <input 
+            type="number"
+            name="coords-lat"
+            value="0"
+            min="" max="" 
+            id="lat"><br>
+          <label for="lon">경도 : </label>
+          <input
+            type="number"
+            name="coords-lon"
+            value="0"
+            min="" max="" 
+            id="lon"><br>
+        </div>
+        
+        <div class="box" id="map-window">
+          <iframe width="150px" height="150px"></iframe>
+        </div>
+        
+        <div class="box" id="category-window">
+          <span>Category</span>
+          <select id="select-category">
+            <option>Select</option>
+          </select><br>
+          <span>Playlist</span>
+          <select id="select-playlist">
+            <option>Select</option>
+          </select>
+          <button type="submit" id="category-btn">Search</button>
+        </div>
+
+        <div class="box" id="search-window">
+          <input type="text" id="search-text">
+          <button type="submit" id="search-btn">Search</button>
+        </div>
+
+        <div class="box" id="song-list-window">
+          Song List<br>
+          <div id="song-list">
+          </div>
+        </div>
+
+        <div class="box" id="song-detail-window">
+          <div id="song-detail">
+          </div>
+        </div>
+      </div>
+    </form>
   </main>
   <div class="footer" w3-include-html="statics/foot.html"></div>
+  <script src="./js/playlist/APP_CTRL.js" type="module"></script>
 </body>
 </html>  
