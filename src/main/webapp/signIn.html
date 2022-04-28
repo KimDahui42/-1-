@@ -2,16 +2,47 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="styles/style.css"/>
-<script src="http://www.w3schools.com/lib/w3data.js"></script>
+<link rel="stylesheet" type="text/css" href="styles/signIn.css"/>
+<script src="http://www.w3schools.com/lib/w3data.js">
+	function passwordcheck() {
+		let password = document.getElementById("password").value
+		let passwordCheck = document.getElementById("passwordCheck").value
+		if(password!= passwordCheck) {
+			alert("비밀번호가 동일하지 않습니다.");
+		}
+	}
+</script>
 <title>SPIRITFY</title>
 </head>
 <body class="container" onload="w3IncludeHTML();">
     <div class="header" w3-include-html="statics/head.html"></div>
     <div class="nav" w3-include-html="statics/nav.html"></div>
   <main>
-    Sign In
+    <strong>Sign In</strong>
   </main>
+  <hr>
+  <br>
+  <form>
+  	<label>
+  	<span>Name</span> <input type="text"><br>
+  	</label>
+  	<label>
+  	<span>ID</span> <input type="text"><br>
+  	</label>
+  	<label>
+  	<span>password</span> <input id="password" type="password"><br>
+  	</label>
+  	<label>
+  	<span>password check</span> <input id="passwordCheck" type="password"><br>
+  	<button id="pwcheck" onclick="passwordchceck()">check</button>
+  	</label>
+  	<label>
+  	<span>Email</span> <input type="text" placeholder="abc@gmail.com"><br>
+  	</label>
+  	<label>
+  	<input type="submit" value = "sign in">
+  	</label>
+  </form>
   <div class="footer" w3-include-html="statics/foot.html"></div>
 </body>
 </html>  
