@@ -122,4 +122,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.toptal.com/developers/gitignore/api/windows,eclipse,java 
+# End of https://www.toptal.com/developers/gitignore/api/windows,eclipse,java
+
+# .DS_Store files created from MacOS Finder
+**/.DS_Store
