@@ -58,7 +58,7 @@ const UIController = (function() {
     },
     
     createTrack (id, name) {
-      const html = `<a href="#" id="${id}">${name}</a><br>`;
+      const html = `<a href="#" id="${id}" class="track-name">${name}</a><br>`;
       document.getElementById(DOMElements.divSonglist).insertAdjacentHTML ('beforeend', html);
     },
 
@@ -75,31 +75,31 @@ const UIController = (function() {
       const html = 
       `
       <div>
-        <img src="${img}" alt="">        
+        <img id="song-cover" src="${img}" alt="">        
       </div>
       <div>
-        <span>${title}</span>
+        <span id="song-detail-title">${title}</span>
       </div>
       <div>
-        <span>By ${artist}</span>
-      </div> 
+        <span id="song-detail-artist">By ${artist}</span>
+      </div><br>
       <div>
-        <span>danceability : ${audioFeatures.danceability}</span>
+        <span id="song-detail-prop">danceability : ${audioFeatures.danceability}</span>
       </div>
       <div>
-        <span>energy : ${audioFeatures.energy}</span>
+        <span id="song-detail-prop">energy : ${audioFeatures.energy}</span>
       </div>
       <div>
-        <span>acousticness : ${audioFeatures.acousticness}</span>
+        <span id="song-detail-prop">acousticness : ${audioFeatures.acousticness}</span>
       </div>
       <div>
-        <span>valence : ${audioFeatures.valence}</span>
+        <span id="song-detail-prop">valence : ${audioFeatures.valence}</span>
       </div>
       <div>
-        <span>key : ${key}</span>
+        <span id="song-detail-prop">key : ${key}</span>
       </div>
       <div>
-        <span>tempo : ${tempo}</span>
+        <span id="song-detail-prop">tempo : ${tempo} bpm</span>
       </div>
       <canvas height="300px" weight="300px" id="chart-canvas">
       </canvas>
