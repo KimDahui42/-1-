@@ -7,13 +7,26 @@
 <title>SPIRITFY</title>
 </head>
 <body class="container" onload="w3IncludeHTML();">
-  <div class="header" w3-include-html="statics/head.html"></div>
-  <div class="nav" w3-include-html="statics/nav.html"></div>
-  <main>
-    <canvas class="recommend-map">
+  <div class="header_container">
+    <div class="header" w3-include-html="statics/head.html"></div>
+    <div class="nav" w3-include-html="statics/nav.html"></div>
+  </div>
+  <div></div>
+  <main class="recommend_container">
+    <div class="recommend_search">
+      <div class="recommend_search_bar_container">
+        <div id="recommendSearchIcon" class="recommend_search_icon" onclick="searchSong();">
+          <img src="images/search.svg" alt="search"/>
+        </div>
+        <input class="recommend_search_bar" id="recommendSearchBar" type="text" value="" placeholder="좋아하는 노래의 제목을 입력해주세요" onkeyup="enter(event);"/>
+      </div>
+      <div id="recommendMap" class="recommend_map">
 
-    </canvas>
+      </div>
+    </div>
   </main>
+
   <div class="footer" w3-include-html="statics/foot.html"></div>
+  <script src="js/recommend.js"></script>
 </body>
 </html>  
