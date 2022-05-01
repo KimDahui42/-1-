@@ -12,7 +12,7 @@
     <div class="nav" include-html="statics/nav.html"></div>
     </div>
     <div></div>
-  <main style="background-color: aliceblue;">
+  <main>
     <form>
       <input type="hidden" id="access_token">
       <input type="hidden" id="country_code">
@@ -57,11 +57,11 @@
         </div>
         
         <div class="box" id="category-window">
-          <span>Category</span>
+          <span>Category </span>
           <select id="select-category">
             <option>Select</option>
           </select><br>
-          <span>Playlist</span>
+          <span>Playlist </span>
           <select id="select-playlist">
             <option>Select</option>
           </select>
@@ -69,12 +69,12 @@
         </div>
 
         <div class="box" id="search-window">
-          <input type="text" id="search-text">
+          <input type="text" id="search-text" placeholder="Song">
           <button type="submit" id="search-btn">Search</button>
         </div>
 
         <div class="box" id="song-list-window">
-          Song List<br>
+          <div id="track-title"><strong>Song List</strong></div>
           <div id="song-list">
           </div>
         </div>
