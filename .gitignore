@@ -126,5 +126,5 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,eclipse,java
 
-# .DS_Store files made by MACOS Finder
+# .DS_Store files created from MacOS Finder
 **/.DS_Store

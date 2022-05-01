@@ -1,17 +1,20 @@
 import APIController from "./API_CTRL.js";
 import UIController from "./UI_CTRL.js";
 import CHARTController from "./CHART_CTRL.js";
+import GEOController from "./GEO_CTRL.js";
+import MUSICController from "./MUSIC_CTRL.js";
 
-const APPController = ((UICtrl, APICtrl, CHARTCtrl) => {
+const APPController = ((UICtrl, APICtrl, CHARTCtrl, GEOCtrl, MUSICCtrl) => {
   const DOMInputs = UICtrl.inputField();
 
   const loadCategories = async () => {
     const token = await APICtrl.getToken();
     UICtrl.storeToken (token);
-    const categories = await APICtrl.getCategories (token);
+    UICtrl.resetCategory ();
+    const categories = await APICtrl.getCategories (token, UICtrl.getCountryCode());
     console.log (categories);
     categories.forEach (element => {
-      UICtrl.createCategory(element.name, element.id);
+      UICtrl.createCategory (element.name, element.id);
     });
   }
 
@@ -25,6 +28,7 @@ const APPController = ((UICtrl, APICtrl, CHARTCtrl) => {
     }
     else
     {
+      loadCategories();
       UICtrl.hideBox (DOMInputs.selConuntryWin);
       UICtrl.hideBox (DOMInputs.mapWin);
       UICtrl.showBox (DOMInputs.songlistWin);
@@ -44,17 +48,33 @@ const APPController = ((UICtrl, APICtrl, CHARTCtrl) => {
     UICtrl.resetTracks();
   }
 
-  DOMInputs.category.addEventListener('change', async () => {
+  DOMInputs.category.addEventListener ('change', async () => {
     UICtrl.resetPlaylist();
     const token = UICtrl.getStoredToken().token;
     const selectCategory = UICtrl.inputField().category;
     const categoryId = selectCategory.options[selectCategory.selectedIndex].value;
     const playlist = await APICtrl.getCategoryPlaylist (token, categoryId);
-    const searchtest = await APICtrl.getSearchResult (token, "Youth", "track,artist");
-    console.log(searchtest);
     playlist.forEach(element => {
       UICtrl.createPlaylist(element.name, element.tracks.href);
     });
+  });
+
+  DOMInputs.selectCTRY.addEventListener ('change', async () => {
+    const index = DOMInputs.selectCTRY.selectedIndex;
+    if (index == 0)
+    {
+      GEOCtrl.init(DOMInputs.map, DOMInputs.lat, DOMInputs.lon);
+      UICtrl.storeCountryCode('');
+    }
+    else
+    {
+      const newLatLon = GEOCtrl.getCountryLatLon (index - 1);
+      GEOCtrl.storeCoords (newLatLon.lat, newLatLon.lon);
+      GEOCtrl.showMap();
+      UICtrl.storeCountryCode (DOMInputs.selectCTRY[index].value);
+    }
+    //console.log (DOMInputs.selectCTRY[DOMInputs.selectCTRY.selectedIndex].value);
+    //console.log (GEOCtrl.getCountryLatLon(DOMInputs.selectCTRY.selectedIndex + 1));
   });
 
   DOMInputs.categoryBtn.addEventListener('click', async (e) => {
@@ -78,7 +98,15 @@ const APPController = ((UICtrl, APICtrl, CHARTCtrl) => {
     const trackId = track.id;
     const audioFeatures = await APICtrl.getAudioFeature (token, trackId);
     const audioAnalysis = await APICtrl.getAudioAnalysis (token, trackId);
-    UICtrl.createTrackDetail (track.album.images[2].url, track.name, track.artists[0].name, audioFeatures, audioAnalysis);
+    UICtrl.createTrackDetail (
+      track.album.images[2].url,
+      track.name,
+      track.artists[0].name,
+      audioFeatures,
+      MUSICCtrl.getKey(
+        audioAnalysis.track.key,
+        audioAnalysis.track.mode),
+      audioAnalysis.track.tempo);
     CHARTCtrl.init();
     CHARTController.drawPath (
       audioFeatures.danceability,
@@ -97,17 +125,20 @@ const APPController = ((UICtrl, APICtrl, CHARTCtrl) => {
       UICtrl.createTrack(element.href, `${element.name} - ${element.artists[0].name}`);
     });
   });
+  
+  DOMInputs.window.forEach((obj)=> {
+    obj.addEventListener('click', changeWindow);
+  });
 
   return {
     init() {
       console.log("start!");
       loadCategories();
+      UICtrl.storeCountryCode('');
       changeWindow();
-      DOMInputs.window.forEach((obj)=> {
-        obj.addEventListener('click', changeWindow);
-      });
+      GEOCtrl.init(DOMInputs.map, DOMInputs.lat, DOMInputs.lon);
     }
   }
-})(UIController, APIController, CHARTController);
+})(UIController, APIController, CHARTController, GEOController, MUSICController);
 
 APPController.init();
