@@ -15,6 +15,7 @@
   <main>
     <form>
       <input type="hidden" id="access_token">
+      <input type="hidden" id="country_code">
       <div class="box-container">
         <div class="box">
           <input type="radio" name="select-window" id="country" value="country" checked>
@@ -26,30 +27,33 @@
         </div>
 
         <div class="box" id="country-select-window">
-          <select>
-            <option value="null">현재 위치</option>
+          <select id="select-country">
+            <option value=null>선택 안함</option>
             <option value="KR">한국</option>
             <option value="US">미국</option>
-            <option value="JR">일본</option>
+            <option value="JP">일본</option>
+            <option value="CN">중국</option>
+            <option value="CA">캐나다</option>
+            <option value="AT">호주</option>
           </select><br>
           <label for="lat">위도 : </label>
           <input 
             type="number"
             name="coords-lat"
             value="0"
-            min="" max="" 
+            min="-90" max="90" 
             id="lat"><br>
           <label for="lon">경도 : </label>
           <input
             type="number"
             name="coords-lon"
             value="0"
-            min="" max="" 
+            min="-180" max="180" 
             id="lon"><br>
         </div>
         
         <div class="box" id="map-window">
-          <iframe width="150px" height="150px"></iframe>
+          <iframe width="400px" height="300px" id="map"></iframe>
         </div>
         
         <div class="box" id="category-window">

@@ -18,8 +18,9 @@ const APIController = (() => {
     return data.access_token;
   }
 
-  const _getCategories = async (token) => {
-    const result = await fetch(`${baseURL}/browse/categories?country=KR`, {
+  const _getCategories = async (token, country) => {
+    console.log(country);
+    const result = await fetch(`${baseURL}/browse/categories` + (country?`?country=${country}`:''), {
       method: 'GET',
       headers: { 
         'Content-Type' : 'application/json',
@@ -101,8 +102,8 @@ const APIController = (() => {
     getToken() {
       return _getToken();
     },
-    getCategories (token) {
-      return _getCategories (token);
+    getCategories (token, country) {
+      return _getCategories (token, country);
     },
     getCategoryPlaylist (token, category_id) {
       return _getCategoryPlaylist(token, category_id);

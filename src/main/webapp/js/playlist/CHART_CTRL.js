@@ -40,8 +40,8 @@ const CHARTController = (() => {
 
   const _drawPath = (dance, energy, acoustic, valence) => {
     context.beginPath();
-    context.strokeStyle = 'rgba(100, 50, 100, 1)';
-    context.fillStyle = 'rgba(100, 50, 100, 0.5)';
+    context.strokeStyle = 'rgba(30, 215, 96, 1)'; //#1ed760
+    context.fillStyle = 'rgba(30, 215, 96, 0.5)';
     context.moveTo(150, 150 - 100 * dance);
     context.lineTo(150 + 100 * energy, 150);
     context.lineTo(150, 150 + 100 * acoustic);

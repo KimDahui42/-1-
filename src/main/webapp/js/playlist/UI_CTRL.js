@@ -8,6 +8,11 @@ const UIController = (function() {
     searchButton: 'search-btn',
     divSongDetail: 'song-detail',
     accessToken: 'access_token',
+    countryCode: 'country_code',
+    selectCountry: 'select-country',
+    mapFrame: 'map',
+    latInput: 'lat',
+    lonInput: 'lon',
     divSonglist: 'song-list',
     searchField: 'search-text',
     selectCountryWindow: 'country-select-window',
@@ -28,6 +33,10 @@ const UIController = (function() {
         categoryBtn: document.getElementById (DOMElements.categoryButton),
         searchBtn: document.getElementById (DOMElements.searchButton),
         songDetail: document.getElementById (DOMElements.divSongDetail),
+        map: document.getElementById (DOMElements.mapFrame),
+        lat: document.getElementById (DOMElements.latInput),
+        lon: document.getElementById (DOMElements.lonInput),
+        selectCTRY: document.getElementById (DOMElements.selectCountry),
         searchText: document.getElementById (DOMElements.searchField),
         selConuntryWin: document.getElementById (DOMElements.selectCountryWindow),
         mapWin: document.getElementById (DOMElements.mapWindow),
@@ -43,17 +52,22 @@ const UIController = (function() {
       document.getElementById(DOMElements.selectCategory).insertAdjacentHTML('beforeend', html);
     }, 
 
-    createPlaylist(text, value) {
+    createPlaylist (text, value) {
       const html = `<option value="${value}">${text}</option>`;
       document.getElementById(DOMElements.selectPlaylist).insertAdjacentHTML('beforeend', html);
     },
     
-    createTrack(id, name) {
+    createTrack (id, name) {
       const html = `<a href="#" id="${id}">${name}</a><br>`;
-      document.getElementById(DOMElements.divSonglist).insertAdjacentHTML('beforeend', html);
+      document.getElementById(DOMElements.divSonglist).insertAdjacentHTML ('beforeend', html);
     },
 
-    createTrackDetail(img, title, artist, audioFeatures, audioAnalysis) {
+    createTrackTitle (title) {
+      const html = `<a id="track-title">${title}</a><br>`;
+      document.getElementById(DOMElements.divSonglist).insertAdjacentHTML ('beforeend', html);
+    },
+
+    createTrackDetail (img, title, artist, audioFeatures, key, tempo) {
 
       const detailDiv = document.getElementById(DOMElements.divSongDetail);
       detailDiv.innerHTML = '';
@@ -81,11 +95,21 @@ const UIController = (function() {
       <div>
         <span>valence : ${audioFeatures.valence}</span>
       </div>
+      <div>
+        <span>key : ${key}</span>
+      </div>
+      <div>
+        <span>tempo : ${tempo}</span>
+      </div>
       <canvas height="300px" weight="300px" id="chart-canvas">
       </canvas>
       `;
 
       detailDiv.insertAdjacentHTML('beforeend', html)
+    },
+
+    resetCategory () {
+      this.inputField().category.innerHTML = '<option>Select</option>';
     },
 
     resetTrackDetail() {
@@ -110,8 +134,16 @@ const UIController = (function() {
       obj.style.display = "block";
     },
 
-    storeToken(value) {
-      document.getElementById(DOMElements.accessToken).value = value;
+    storeCountryCode (value) {
+      document.getElementById (DOMElements.countryCode).value = value;
+    },
+
+    getCountryCode () {
+      return document.getElementById (DOMElements.countryCode).value;
+    },
+
+    storeToken (value) {
+      document.getElementById (DOMElements.accessToken).value = value;
     },
 
     getStoredToken() {
