@@ -21,34 +21,36 @@
     <div class="nav" include-html="statics/nav.html"></div>
     </div>
 	<div></div>
-  <main style="background-color: aliceblue;">
-    <strong>Sign In</strong>
+  <main class="box">
+    <strong class="a">Sign In</strong>
   
   <hr>
   <br>
   <form>
   	<label>
-  	<span>Name</span> <input type="text"><br>
+  	    <span>Name</span> <input type="text"><br>
   	</label>
   	<label>
-  	<span>ID</span> <input type="text"><br>
+  	    <span>ID</span> <input type="text"><br>
   	</label>
   	<label>
-  	<span>password</span> <input id="password" type="password"><br>
+  	    <span>password</span> <input id="password" type="password"><br>
   	</label>
   	<label>
-  	<span>password check</span> <input id="passwordCheck" type="password"><br>
-  	<button id="pwcheck" onclick="passwordchceck()">check</button>
+  	    <span>password check</span> <input id="passwordCheck" type="password"><br>
+  	    <button id="pwcheck" onclick="passwordchceck()">check</button>
   	</label>
   	<label>
-  	<span>Email</span> <input type="text" placeholder="abc@gmail.com"><br>
+  	    <span>Email</span> <input type="text" placeholder="abc@gmail.com"><br>
   	</label>
+    <label>
+        <span>Phone</span> <input id="phone" type="tel" placeholder="010-1234-5678"><br>
   	<label>
-  	<input type="submit" value = "sign in">
+  	    <input type="button" value = "sign in" id="button" onclick="location.replace('index.html')">
   	</label>
   </form>
   </main>
   <div class="footer" include-html="statics/foot.html"></div>
   <script src="./js/importHTML.js"></script>
 </body>
-</html>  
+</html>
