@@ -2,6 +2,8 @@
 
 /*container*/
 .container{
+    overflow-x:hidden;
+    overflow-y:scroll;
     display: grid;
     background: #191414;
     grid-template-columns: 1fr;
@@ -11,9 +13,9 @@
 /*header*/
 .header{
     display: grid;
-    grid-template-columns: 3em 10em;
+    grid-template-columns: auto auto;
     grid-gap:0.5em;
-    min-width:14em;
+    width:9em;
 
 }
 .header_container{
@@ -31,7 +33,7 @@
     align-self: center;
 }
 .header_title{
-    width:10em;
+    width:fit-content;
 }
 /*nav*/
 .nav{
@@ -46,7 +48,6 @@
     grid-gap:0.5em;
     list-style-type: none;
     padding-top:0.3em;
-    min-width: 35em;
     animation:menuImpact 1s;
 }
 @keyframes menuImpact{
@@ -83,93 +84,3 @@
     grid-template-columns: repeat(2,auto);
     grid-gap:0.5em;
 }
-/*playlist.html*/
-/*recommend.html*/
-.recommend_container{
-    display:grid;
-    grid-template-rows: auto auto;
-    background:lightblue;
-}
-.recommend_search{
-    display: grid;
-    background-image: url('../images/space.webp.png');
-    justify-content: center;
-    border-style: none;
-    height: fit-content;
-    padding-bottom: 30em;
-    animation:space 450s ease infinite;
-}
-@keyframes space{
-    0%{background-position: 0% 50%;}
-    50%{background-position: 100% 50%;}
-    100%{background-position: 0% 50%;}
-}
-.recommend_search_bar_container{
-    display: grid;
-    grid-template-columns: 3em auto;
-    grid-gap:0.5em;
-    margin: 15em 0 2em;
-    justify-self: center;
-    justify-content:start;
-    align-content: center;
-    background:#191414;
-    width:40em;
-    height: 3.5em;
-    border-style: none;
-    border-radius: 0.5em;
-    box-shadow: 2px 2px 4px 2px rgba(0,0,0,0.1);  
-}
-.recommend_search_bar_container:hover{
-    border-style:solid;
-    border-color: #787676;
-    border-width: 0.01em;
-}
-.recommend_search_bar{
-    border-style: none;
-    background: #191414;
-    color: #ffffff;
-    font-size: 1.15em;
-    width:30em;
-}
-
-.recommend_search_bar:focus{
-    outline: none;
-}
-.recommend_search_icon>img{
-    width:1.7em;
-    margin-left:0.7em;
-    padding-top:0.1em;
-}
-.recommend_map{
-    width:90em;
-    height: fit-content;
-    color:#ffffff;
-    display: grid;
-    justify-items: center;
-}
-.recommend_map_center{
-    font-size: xx-large;
-    font-weight: bold;
-}
-.recommend_map_node{
-    width:fit-content;
-    display:grid;
-    justify-items: center;
-}
-.recommend_map_node_dot{
-    width:0.7em;
-    height:0.7em;
-    background-color: #ffffff;
-    border-radius: 0.7em;
-}
-.recommend_map_node_title{
-    width:fit-content;
-}
-.recommend_map_node_title > a{
-    text-decoration: none; 
-    color: inherit;
-    
-}
-
-/*community.html*/
-/*sign in.html*/

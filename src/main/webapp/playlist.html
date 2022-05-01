@@ -4,15 +4,15 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="styles/style.css"/>
 <link rel="stylesheet" type="text/css" href="styles/playlist.css"/>
-<script src="http://www.w3schools.com/lib/w3data.js"></script>
 <title>SPIRITFY</title>
 </head>
-<body class="container" onload="w3IncludeHTML();">
+<body class="container">
   <div class="header_container">
-    <div class="header" w3-include-html="statics/head.html"></div>
-    <div class="nav" w3-include-html="statics/nav.html"></div>
+    <div class="header" include-html="statics/head.html"></div>
+    <div class="nav" include-html="statics/nav.html"></div>
     </div>
-  <main>
+    <div></div>
+  <main style="background-color: aliceblue;">
     <form>
       <input type="hidden" id="access_token">
       <div class="box-container">
@@ -82,7 +82,8 @@
       </div>
     </form>
   </main>
-  <div class="footer" w3-include-html="statics/foot.html"></div>
+  <div class="footer" include-html="statics/foot.html"></div>
   <script src="./js/playlist/APP_CTRL.js" type="module"></script>
+  <script src="./js/importHTML.js"></script>
 </body>
 </html>  
