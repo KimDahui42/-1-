@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="styles/style.css"/>
-<script src="http://www.w3schools.com/lib/w3data.js"></script>
+<link rel="stylesheet" type="text/css" href="styles/recomend.css"/>
 <title>SPIRITFY</title>
 </head>
-<body class="container" onload="w3IncludeHTML();">
+<body class="container">
   <div class="header_container">
-    <div class="header" w3-include-html="statics/head.html"></div>
-    <div class="nav" w3-include-html="statics/nav.html"></div>
+    <div include-html="statics/head.html"></div>
+    <div include-html="statics/nav.html"></div>
   </div>
   <div></div>
   <main class="recommend_container">
@@ -20,13 +20,15 @@
         </div>
         <input class="recommend_search_bar" id="recommendSearchBar" type="text" value="" placeholder="좋아하는 노래의 제목을 입력해주세요" onkeyup="enter(event);"/>
       </div>
-      <div id="recommendMap" class="recommend_map">
-
+      <div class="recommend_map_container">
+        <div id="recommendMap" class="recommend_map"></div>
       </div>
+      
     </div>
   </main>
 
-  <div class="footer" w3-include-html="statics/foot.html"></div>
-  <script src="js/recommend.js"></script>
+  <div class="footer" include-html="statics/foot.html"></div>
+  <script src="./js/recommend.js"></script>
+  <script src="./js/importHTML.js"></script>
 </body>
 </html>  
