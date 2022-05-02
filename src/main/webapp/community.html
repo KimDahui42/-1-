@@ -25,6 +25,8 @@
             <tr class="board__titles">
               <th class="board__column">num</th>
               <th class="board__column">title</th>
+              <th class="board__column">name</th>
+              <th class="board__column">genre</th>
               <th class="board__column">date</th>
               <th class="board__column">views</th>
             </tr>
@@ -53,7 +55,7 @@
         <td><strong>genre</strong></td>
         <td>
   		<select name="genre" class="editor__title-input">
-  			<option value="1">balad</option>
+  			<option value="1">ballad</option>
   			<option value="2">pop</option>
   			<option value="3">hip-hop</option>
   			<option value="4">kpop</option>
@@ -64,7 +66,7 @@
   		</tr>
   		<tr>
   		<td><strong>date</strong></td> 
-  		<td><input type="date" class="editor__title-input" id="date" value="2022-05-01"></td>
+  		<td><input type="date" class="editor__title-input" id="date" value="2022-05-03"></td>
   		<tr>
             </table>
 
@@ -88,13 +90,16 @@
       const editorForm = document.querySelector('#editor-form');
       const titleInput = document.querySelector('#editor-title-input');
       const contentInput = document.querySelector('#editor-content-input');
+      const nameInput = document.querySelector('.editor__name-input');
+      const genreInput = document.getElementsByName('genre')[0];
 
       const BOARDLIST_LS = 'boardLists';
       const boardListsObj = [];
       let nums = 0;
-      //let author = '눈송이';
+      let author = '눈송이';
       let date = new Date();
       let views = Math.floor(Math.random() * 99) + 1;
+      let genre = 'ballad';
 
      function onTitleClick(e) {
     contentsContainer.textContent = '';
@@ -115,9 +120,13 @@
     const contentsColumnSecond = document.createElement('div');
     contentsColumnSecond.classList.add('contents__column');
 
-    //const contentsAuthor = document.createElement('div');
-    //contentsAuthor.classList.add('contents__author');
-    //contentsAuthor.textContent = lists[index].author;
+    const contentsAuthor = document.createElement('div');
+    contentsAuthor.classList.add('contents__author');
+    contentsAuthor.textContent = lists[index].author;
+
+    const contentsGenre = document.createElement('div');
+    contentsGenre.classList.add('contents__genre');
+    contentsGenre.textContent = lists[index].genre;
 
     const contentsDate = document.createElement('div');
     contentsDate.classList.add('contents__date');
@@ -133,9 +142,11 @@
 
     contentsColumnFirst.appendChild(contentsTitle);
 
-    //contentsColumnSecond.appendChild(contentsAuthor);
+    contentsColumnSecond.appendChild(contentsAuthor);
+    contentsColumnSecond.appendChild(contentsGenre);
     contentsColumnSecond.appendChild(contentsDate);
     contentsColumnSecond.appendChild(contentsViews);
+
 
     contentsTitles.appendChild(contentsColumnFirst);
     contentsTitles.appendChild(contentsColumnSecond);
@@ -158,18 +169,21 @@
 
         const title = titleInput.value;
         const content = contentInput.value;
-
+        const author = nameInput.value;
+        const genre = genreInput[genreInput.selectedIndex].innerHTML;
+        console.log(genre);
         const lists = JSON.parse(localStorage.getItem(BOARDLIST_LS));
         if (!lists) {
           const objArr = [];
           objArr.push({
             num: `${nums++}`,
             title: `${title}`,
-           // author: `${author}`,
+            author: `${author}`,
             date: `${date.getFullYear()}.${
               date.getMonth() + 1
             }.${date.getDate()}.`,
             views: `${views++}`,
+            genre: `${genre}`,
             content: `${content}`,
           });
 
@@ -178,11 +192,12 @@
           lists.push({
             num: `${nums++}`,
             title: `${title}`,
-          //  author: `${author}`,
+            author: `${author}`,
             date: `${date.getFullYear()}.${
               date.getMonth() + 1
             }.${date.getDate()}.`,
             views: `${views++}`,
+            genre: `${genre}`,
             content: `${content}`,
           });
 
@@ -192,6 +207,8 @@
         titleInput.value = '';
         contentInput.value = '';
         titleInput.focus();
+        nameInput.value = '';
+        genreInput.selectedIndex = 0;
         window.location.reload();
       }
 
@@ -217,9 +234,13 @@
 
             aTitle.appendChild(tdTitle);
 
-           // const tdAuthor = document.createElement('td');
-           // tdAuthor.classList.add('board__content-column');
-            //tdAuthor.textContent = list.author;
+            const tdAuthor = document.createElement('td');
+            tdAuthor.classList.add('board__content-column');
+            tdAuthor.textContent = list.author;
+
+            const tdGenre = document.createElement('td');
+            tdGenre.classList.add('board__content-column');
+            tdGenre.textContent = list.genre;
 
             const tdDate = document.createElement('td');
             tdDate.classList.add('board__content-column');
@@ -231,7 +252,8 @@
 
             tr.appendChild(tdNum);
             tr.appendChild(aTitle);
-          //  tr.appendChild(tdAuthor);
+            tr.appendChild(tdAuthor);
+            tr.appendChild(tdGenre);
             tr.appendChild(tdDate);
             tr.appendChild(tdViews);
 
@@ -287,9 +309,9 @@
 
             aTitle.appendChild(tdTitle);
 
-           // const tdAuthor = document.createElement('td');
-          //  tdAuthor.classList.add('board__content-column');
-           // tdAuthor.textContent = list.author;
+            const tdAuthor = document.createElement('td');
+            tdAuthor.classList.add('board__content-column');
+            tdAuthor.textContent = list.author;
 
             const tdDate = document.createElement('td');
             tdDate.classList.add('board__content-column');
@@ -301,7 +323,7 @@
 
             tr.appendChild(tdNum);
             tr.appendChild(aTitle);
-          //  tr.appendChild(tdAuthor);
+            tr.appendChild(tdAuthor);
             tr.appendChild(tdDate);
             tr.appendChild(tdViews);
 
