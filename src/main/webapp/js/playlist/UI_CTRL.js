@@ -58,7 +58,7 @@ const UIController = (function() {
     },
     
     createTrack (id, name) {
-      const html = `<a href="#" id="${id}">${name}</a><br>`;
+      const html = `<a href="#" id="${id}" class="track-name">${name}</a><br>`;
       document.getElementById(DOMElements.divSonglist).insertAdjacentHTML ('beforeend', html);
     },
 
@@ -67,7 +67,7 @@ const UIController = (function() {
       document.getElementById(DOMElements.divSonglist).insertAdjacentHTML ('beforeend', html);
     },
 
-    createTrackDetail (img, title, artist, audioFeatures, key, tempo) {
+    createTrackDetail (img, title, artist, audioFeatures, key, tempo, pitches) {
 
       const detailDiv = document.getElementById(DOMElements.divSongDetail);
       detailDiv.innerHTML = '';
@@ -75,31 +75,33 @@ const UIController = (function() {
       const html = 
       `
       <div>
-        <img src="${img}" alt="">        
+        <img id="song-cover" src="${img}" alt="">        
       </div>
       <div>
-        <span>${title}</span>
+        <span id="song-detail-title">${title}</span>
       </div>
       <div>
-        <span>By ${artist}</span>
-      </div> 
-      <div>
-        <span>danceability : ${audioFeatures.danceability}</span>
+        <span id="song-detail-artist">By ${artist}</span>
+      </div><br>
+      <div id="card-container">
+      <div id="card-box">
+        <div id="prop-box">
+          <span id="song-detail-prop">danceability : ${audioFeatures.danceability}</span><br>
+          <span id="song-detail-prop">energy : ${audioFeatures.energy}</span><br>
+          <span id="song-detail-prop">acousticness : ${audioFeatures.acousticness}</span><br>
+          <span id="song-detail-prop">valence : ${audioFeatures.valence}</span><br>
+          <span id="song-detail-prop">key : ${key}</span><br>
+          <span id="song-detail-prop">tempo : ${tempo} bpm</span>
+        </div>
+        <div id="pitch-box">
+          <div>C : ${pitches[0]}</div> <div> C#/Db : ${pitches[1]}</div>
+          <div>D : ${pitches[2]}</div> <div> D#/Eb : ${pitches[3]}</div>
+          <div>E : ${pitches[4]}</div> <div> F : ${pitches[5]}</div>
+          <div>F#/Gb : ${pitches[6]}</div> <div> G : ${pitches[7]}</div>
+          <div>G#/Ab : ${pitches[8]}</div> <div> A : ${pitches[9]}</div>
+          <div>A#/Bb : ${pitches[10]}</div> <div> B : ${pitches[11]}</div>
+        </div>
       </div>
-      <div>
-        <span>energy : ${audioFeatures.energy}</span>
-      </div>
-      <div>
-        <span>acousticness : ${audioFeatures.acousticness}</span>
-      </div>
-      <div>
-        <span>valence : ${audioFeatures.valence}</span>
-      </div>
-      <div>
-        <span>key : ${key}</span>
-      </div>
-      <div>
-        <span>tempo : ${tempo}</span>
       </div>
       <canvas height="300px" weight="300px" id="chart-canvas">
       </canvas>

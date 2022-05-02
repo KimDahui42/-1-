@@ -3,45 +3,43 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="styles/style.css"/>
+<link rel="stylesheet" type="text/css" href="styles/index.css"/>
+<link rel="short icon" type="image/x-icon" href="images/Logo.svg">
 <script src="http://www.w3schools.com/lib/w3data.js"></script>
 <title>SPIRITFY</title>
 </head>
-<body class="container" onload="w3IncludeHTML();">
+<body class="container">
     <div class="header_container">
-        <div class="header" w3-include-html="statics/head.html"></div>
-        <div class="nav" w3-include-html="statics/nav.html"></div>
+        <div class="header" include-html="statics/head.html"></div>
+        <div class="nav" include-html="statics/nav.html"></div>
     </div>
+    <div></div>
     <div class="index_container">
         <main>
-            <section>
-                <h2>welcome to our website!</h2>
-                <article>
-                    <h3>노래제목</h3>
-                    <p>소개,설명</p>
-                </article>
-                <article>
-                    <h3>노래제목</h3>
-                    <p>소개,설명</p>
-                </article>
-                <article>
-                    <h3>노래제목</h3>
-                    <p>소개,설명</p>
-                </article>
-            </section>
+            <div class="slides_screen">
+                <div class="slides">
+                    <div id="slide_1" class="slide">
+                        <img class="slide_image" src="images/recommend.png">
+                        <a href="recommend.html"><div style="position:absolute;top:45.3vw;left:2.2vw;" class="slide_button">move</div></a>
+                    </div>
+                    <div id="slide_2" class="slide">
+                        <img class="slide_image" src="images/ExploreTab.png">
+                        <a href="playlist.html"><div style="position:absolute;top:18vw;left:5.2vw;" class="slide_button">move</div></a>
+                    </div>
+                    <div id="slide_3" class="slide">
+                        <img class="slide_image" src="images/CommunityTab.png">
+                        <a href="community.html"><div style="position:absolute;top:23.5vw;left:4vw;" class="slide_button">move</div></a>
+                    </div>
+                    <div id="slide_1" class="slide">
+                        <img class="slide_image" src="images/recommend.png">
+                        <a href="recommend.html"><div style="position:absolute;top:45.3vw;left:2.2vw;" class="slide_button">move</div></a>
+                    </div>
+                </div>
+
+            </div>
         </main>
-        <aside>
-            <h3>오늘의 음악 추천</h3>
-            <div>
-                <h4>노래1</h4>
-            </div>
-            <div>
-                <h4>노래2</h4>
-            </div>
-            <div>
-                <h4>노래3</h4>
-            </div>
-        </aside>
     </div>
-    <div class="main_footer" w3-include-html="statics/foot.html"></div>
+    <div class="main_footer" include-html="statics/foot.html"></div>
+    <script src="./js/importHTML.js"></script>
 </body>
 </html> 

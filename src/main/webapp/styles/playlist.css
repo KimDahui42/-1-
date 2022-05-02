@@ -1,3 +1,8 @@
+main {
+  color : white;
+  font-size : 1.4em;
+}
+
 .box-container {
   display : flex;
   flex-direction : row;
@@ -7,10 +12,102 @@
   flex-direction : row;
   width : 30%;
   height : 50%;
-  padding : 5px;
-  margin : 5px;
+  margin : 2px;
 }
 
 canvas {
   background-color : #191414;
+  position : relative;
+  top : 22vh;
+}
+
+#song-detail-title {
+  font-size : 2.2em;
+  color : #1db954;
+}
+
+#song-detail-artist {
+  font-size : 1.7em;
+  color : #1ed760;
+}
+
+#song-detail-prop {
+  font-size : 1.2em;
+}
+
+#song-cover {
+  width : 10rem;
+  height : 10rem;
+}
+
+.track-name:hover {
+  color : #1db954;
+}
+
+.track-name {
+  color : #1ed760;
+  text-decoration : none;
+  font-size : 1.2em;
+}
+
+#track-title {
+  font-size : 1.5em;
+}
+
+select,
+input[type="text"],
+input[type="number"] {
+  font-size : 0.8em;
+  width : 55%;
+}
+
+button {
+  font-size : 0.8em;
+  background-color : #191414;
+  color : white;
+  transition-duration : 0.4s;
+  border-style : solid;
+  border-color : #1db954;
+}
+
+button:hover {
+  background-color : #1db954;
+}
+
+#card-box {
+  position : relative;
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+}
+
+#pitch-box {
+  display : grid;
+  grid-template-columns: auto auto;
+  grid-gap : 2px;
+  justify-items : center;
+  transform : rotateY(180deg);
+}
+
+#prop-box,
+#pitch-box {
+  position : absolute;
+  top : 0;
+  left: 0;
+  width : 30vh;
+  height : 20vh;
+  backface-visibility: hidden;
+  border-color : #1db954;
+  border-style: double;
+}
+
+#card-container:hover #card-box{
+  transform : rotateY(180deg);
+}
+
+#card-container {
+  perspective: 500px;
+}
+
+#prop-box {
+  text-align : center;
 }

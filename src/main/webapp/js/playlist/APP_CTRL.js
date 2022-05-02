@@ -98,6 +98,7 @@ const APPController = ((UICtrl, APICtrl, CHARTCtrl, GEOCtrl, MUSICCtrl) => {
     const trackId = track.id;
     const audioFeatures = await APICtrl.getAudioFeature (token, trackId);
     const audioAnalysis = await APICtrl.getAudioAnalysis (token, trackId);
+    const pitches = MUSICCtrl.getPitches (audioAnalysis.segments);
     UICtrl.createTrackDetail (
       track.album.images[2].url,
       track.name,
@@ -106,9 +107,11 @@ const APPController = ((UICtrl, APICtrl, CHARTCtrl, GEOCtrl, MUSICCtrl) => {
       MUSICCtrl.getKey(
         audioAnalysis.track.key,
         audioAnalysis.track.mode),
-      audioAnalysis.track.tempo);
+      audioAnalysis.track.tempo,
+      pitches);
+    console.log (pitches);
     CHARTCtrl.init();
-    CHARTController.drawPath (
+    CHARTCtrl.drawPath (
       audioFeatures.danceability,
       audioFeatures.energy,
       audioFeatures.acousticness,

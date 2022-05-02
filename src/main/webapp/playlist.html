@@ -4,14 +4,15 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="styles/style.css"/>
 <link rel="stylesheet" type="text/css" href="styles/playlist.css"/>
-<script src="http://www.w3schools.com/lib/w3data.js"></script>
+<link rel="short icon" type="image/x-icon" href="images/Logo.svg">
 <title>SPIRITFY</title>
 </head>
-<body class="container" onload="w3IncludeHTML();">
+<body class="container">
   <div class="header_container">
-    <div class="header" w3-include-html="statics/head.html"></div>
-    <div class="nav" w3-include-html="statics/nav.html"></div>
+    <div class="header" include-html="statics/head.html"></div>
+    <div class="nav" include-html="statics/nav.html"></div>
     </div>
+    <div></div>
   <main>
     <form>
       <input type="hidden" id="access_token">
@@ -32,7 +33,6 @@
             <option value="KR">한국</option>
             <option value="US">미국</option>
             <option value="JP">일본</option>
-            <option value="CN">중국</option>
             <option value="CA">캐나다</option>
             <option value="AT">호주</option>
           </select><br>
@@ -57,11 +57,11 @@
         </div>
         
         <div class="box" id="category-window">
-          <span>Category</span>
+          <span>Category </span>
           <select id="select-category">
             <option>Select</option>
           </select><br>
-          <span>Playlist</span>
+          <span>Playlist </span>
           <select id="select-playlist">
             <option>Select</option>
           </select>
@@ -69,12 +69,12 @@
         </div>
 
         <div class="box" id="search-window">
-          <input type="text" id="search-text">
+          <input type="text" id="search-text" placeholder="Song">
           <button type="submit" id="search-btn">Search</button>
         </div>
 
         <div class="box" id="song-list-window">
-          Song List<br>
+          <div id="track-title"><strong>Song List</strong></div>
           <div id="song-list">
           </div>
         </div>
@@ -86,7 +86,8 @@
       </div>
     </form>
   </main>
-  <div class="footer" w3-include-html="statics/foot.html"></div>
+  <div class="footer" include-html="statics/foot.html"></div>
   <script src="./js/playlist/APP_CTRL.js" type="module"></script>
+  <script src="./js/importHTML.js"></script>
 </body>
 </html>  
