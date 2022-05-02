@@ -1,6 +1,7 @@
 main {
   color : white;
-  font-size : 1.4em;
+  font-size : 1.2em;
+  margin-bottom: 3em;
 }
 
 .box-container {
@@ -19,16 +20,18 @@ main {
 canvas {
   background-color : #191414;
   position : relative;
-  top : 22vh;
+  top: 32vh;
 }
 
 #song-detail-title {
-  font-size : 2.2em;
+  font-size : 1.6em;
+  font-weight: 500;
   color : #1db954;
 }
 
 #song-detail-artist {
-  font-size : 1.7em;
+  font-size : 1.2em;
+  font-weight: 300;
   color : #1ed760;
 }
 
@@ -48,7 +51,7 @@ canvas {
 .track-name {
   color : #1ed760;
   text-decoration : none;
-  font-size : 1.2em;
+  font-size : 1em;
 }
 
 #track-title {
@@ -112,7 +115,7 @@ button:hover {
   top : 0;
   left: 0;
   width : 30vh;
-  height : 20vh;
+  height : fit-content;
   backface-visibility: hidden;
   border-color : #1db954;
   border-style: double;
