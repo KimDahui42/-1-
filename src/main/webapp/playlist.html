@@ -35,14 +35,14 @@
             <option value="JP">일본</option>
             <option value="CA">캐나다</option>
             <option value="AT">호주</option>
-          </select><br>
+          </select><br><br>
           <label for="lat">위도 : </label>
           <input 
             type="number"
             name="coords-lat"
             value="0"
             min="-90" max="90" 
-            id="lat"><br>
+            id="lat"><br><br>
           <label for="lon">경도 : </label>
           <input
             type="number"
@@ -60,16 +60,17 @@
           <span>Category </span>
           <select id="select-category">
             <option>Select</option>
-          </select><br>
+          </select><br><br>
           <span>Playlist </span>
           <select id="select-playlist">
             <option>Select</option>
-          </select>
+          </select><br><br>
           <button type="submit" id="category-btn">Search</button>
         </div>
 
         <div class="box" id="search-window">
-          <input type="text" id="search-text" placeholder="Song">
+          <input type="text" id="search-text" placeholder="Song Title">
+          <br>
           <button type="submit" id="search-btn">Search</button>
         </div>
 

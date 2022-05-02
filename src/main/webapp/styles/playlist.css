@@ -13,6 +13,7 @@ main {
   width : 30%;
   height : 50%;
   margin : 2px;
+  text-align : center;
 }
 
 canvas {
@@ -62,16 +63,33 @@ input[type="number"] {
 }
 
 button {
-  font-size : 0.8em;
+  font-size : 1.4em;
   background-color : #191414;
   color : white;
   transition-duration : 0.4s;
   border-style : solid;
   border-color : #1db954;
+  margin : 10px;
+  padding : 2px;
+  -webkit-box-reflect: below 0.5px linear-gradient(transparent, rgba(30, 215, 96, 0.5));
 }
 
 button:hover {
-  background-color : #1db954;
+  animation-duration : 2s;
+  animation-name : colorChange;
+  animation-iteration-count: infinite;
+}
+
+@keyframes colorChange {
+  0%, 100% {
+    background-color : #1db954;
+    box-shadow : 0 0 50px #1db954;
+  }
+
+  50% {
+    background-color : #1ed760;
+    box-shadow : 0 0 50px #1ed760;
+  }
 }
 
 #card-box {
