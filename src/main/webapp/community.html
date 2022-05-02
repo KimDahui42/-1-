@@ -7,49 +7,65 @@
 <link rel="stylesheet" type="text/css" href="styles/style.css"/>
 <link rel="stylesheet" type="text/css" href="styles/community.css"/>
 
-<script src="http://www.w3schools.com/lib/w3data.js">
-</script>
-
-
 <title>SPIRITFY</title>
 </head>
-<body class="container" onload="w3IncludeHTML();">
+<body class="container">
   <div class="header_container">
-    <div class="header" w3-include-html="statics/head.html"></div>
-    <div class="nav" w3-include-html="statics/nav.html"></div>
+    <div class="header" include-html="statics/head.html"></div>
+    <div class="nav" include-html="statics/nav.html"></div>
   </div>
-<div class="community_text">Community</div>
-  </head>
-  <body>
+    <div></div>
   <main>
-  <div class="community_box">
+    <div class="community_text">Community<hr></div>
+    <div class="community_text_2">share your opinion</div>
+    <div class="community_box">
        <div class="board__container">
         <table class="board">
           <thead class="board__table-head">
             <tr class="board__titles">
               <th class="board__column">num</th>
               <th class="board__column">title</th>
-              <th class="board__column">name</th>
               <th class="board__column">date</th>
               <th class="board__column">views</th>
             </tr>
           </thead>
           <tbody class="board__contents" id="board-body"></tbody>
+          <tfoot class="board__index-container" id="index-container"></tfoot>
         </table>
-        <div class="board__index-container" id="index-container"></div>
+        
       </div>
       <div class="contents__container"></div>
       <div class="editor__container">
         <form action="#" class="editor__form" id="editor-form">
+        <h3>WRITE</h3>
         <table>
         <tr>
         <td><strong>Name  </strong></td>
-        <td><input type="text" class="editor__name-input" id="editor-title-input"></td>
-        <td><strong>Title  </strong></td>
+        <td><input type="text" class="editor__name-input" id="editor-name-input"></td>
+        </tr>
+        <tr>
+        <td><strong>Title</strong></td>
         <td><input type="text"
             class="editor__title-input"
             id="editor-title-input"/></td>
-            </tr>
+       </tr>
+        <tr>
+        <td><strong>genre</strong></td>
+        <td>
+  		<select name="genre" class="editor__title-input">
+  			<option value="1">balad</option>
+  			<option value="2">pop</option>
+  			<option value="3">hip-hop</option>
+  			<option value="4">kpop</option>
+  			<option value="5">dance</option>
+	  		<option value="6">indi</option>
+	  		<option value="7">etc</option>
+  		</select></td>
+  		</tr>
+  		<tr>
+  		<td><strong>date</strong></td> 
+  		<td><input type="date" class="editor__title-input" id="date" value="2022-05-01"></td>
+  		<tr>
             </table>
 
         <input
@@ -76,57 +92,57 @@
       const BOARDLIST_LS = 'boardLists';
       const boardListsObj = [];
       let nums = 0;
-      let author = '눈송이';
+      //let author = '눈송이';
       let date = new Date();
       let views = Math.floor(Math.random() * 99) + 1;
 
-      function onTitleClick(e) {
-        contentsContainer.textContent = '';
-        const lists = JSON.parse(localStorage.getItem(BOARDLIST_LS));
-        const index = e.target.parentNode.id.replace(/[a-z|-]/gi, '');
+     function onTitleClick(e) {
+    contentsContainer.textContent = '';
+    const lists = JSON.parse(localStorage.getItem(BOARDLIST_LS));
+    const index = e.target.parentNode.id.replace(/[a-z|-]/gi, '');
 
-        const contentsTitles = document.createElement('div');
-        contentsTitles.classList.add('contents__titles');
+    const contentsTitles = document.createElement('div');
+    contentsTitles.classList.add('contents__titles');
 
-        const contentsColumnFirst = document.createElement('div');
-        contentsColumnFirst.classList.add('contents__column');
+    const contentsColumnFirst = document.createElement('div');
+    contentsColumnFirst.classList.add('contents__column');
 
-        const contentsTitle = document.createElement('div');
-        contentsTitle.classList.add('contents__title');
-        contentsTitle.textContent = lists[index].title;
+    const contentsTitle = document.createElement('div');
+    contentsTitle.classList.add('contents__title');
+    contentsTitle.textContent = lists[index].title;
 
-        // contents__titles > column >author, date, views
-        const contentsColumnSecond = document.createElement('div');
-        contentsColumnSecond.classList.add('contents__column');
+    // contents__titles > column >author, date, views
+    const contentsColumnSecond = document.createElement('div');
+    contentsColumnSecond.classList.add('contents__column');
 
-        const contentsAuthor = document.createElement('div');
-        contentsAuthor.classList.add('contents__author');
-        contentsAuthor.textContent = lists[index].author;
+    //const contentsAuthor = document.createElement('div');
+    //contentsAuthor.classList.add('contents__author');
+    //contentsAuthor.textContent = lists[index].author;
 
-        const contentsDate = document.createElement('div');
-        contentsDate.classList.add('contents__date');
-        contentsDate.textContent = lists[index].date;
+    const contentsDate = document.createElement('div');
+    contentsDate.classList.add('contents__date');
+    contentsDate.textContent = lists[index].date;
 
-        const contentsViews = document.createElement('div');
-        contentsViews.classList.add('contents__views');
-        contentsViews.textContent = lists[index].views;
+    const contentsViews = document.createElement('div');
+    contentsViews.classList.add('contents__views');
+    contentsViews.textContent = lists[index].views;
 
-        const contentsContent = document.createElement('div');
-        contentsContent.classList.add('contents__content');
-        contentsContent.textContent = lists[index].content;
+    const contentsContent = document.createElement('div');
+    contentsContent.classList.add('contents__content');
+    contentsContent.textContent = lists[index].content;
 
-        contentsColumnFirst.appendChild(contentsTitle);
+    contentsColumnFirst.appendChild(contentsTitle);
 
-        contentsColumnSecond.appendChild(contentsAuthor);
-        contentsColumnSecond.appendChild(contentsDate);
-        contentsColumnSecond.appendChild(contentsViews);
+    //contentsColumnSecond.appendChild(contentsAuthor);
+    contentsColumnSecond.appendChild(contentsDate);
+    contentsColumnSecond.appendChild(contentsViews);
 
-        contentsTitles.appendChild(contentsColumnFirst);
-        contentsTitles.appendChild(contentsColumnSecond);
+    contentsTitles.appendChild(contentsColumnFirst);
+    contentsTitles.appendChild(contentsColumnSecond);
 
-        contentsContainer.appendChild(contentsTitles);
-        contentsContainer.appendChild(contentsContent);
-      }
+    contentsContainer.appendChild(contentsTitles);
+    contentsContainer.appendChild(contentsContent);
+  }
 
       function assignIndex() {
         const lists = JSON.parse(localStorage.getItem(BOARDLIST_LS));
@@ -149,7 +165,7 @@
           objArr.push({
             num: `${nums++}`,
             title: `${title}`,
-            author: `${author}`,
+           // author: `${author}`,
             date: `${date.getFullYear()}.${
               date.getMonth() + 1
             }.${date.getDate()}.`,
@@ -162,7 +178,7 @@
           lists.push({
             num: `${nums++}`,
             title: `${title}`,
-            author: `${author}`,
+          //  author: `${author}`,
             date: `${date.getFullYear()}.${
               date.getMonth() + 1
             }.${date.getDate()}.`,
@@ -183,7 +199,7 @@
         const lists = JSON.parse(localStorage.getItem(BOARDLIST_LS));
 
         lists.forEach((list, index) => {
-          if (index < 5) {
+          if (index < 10) {
             const tr = document.createElement('tr');
             tr.classList.add('board__content');
 
@@ -201,9 +217,9 @@
 
             aTitle.appendChild(tdTitle);
 
-            const tdAuthor = document.createElement('td');
-            tdAuthor.classList.add('board__content-column');
-            tdAuthor.textContent = list.author;
+           // const tdAuthor = document.createElement('td');
+           // tdAuthor.classList.add('board__content-column');
+            //tdAuthor.textContent = list.author;
 
             const tdDate = document.createElement('td');
             tdDate.classList.add('board__content-column');
@@ -215,7 +231,7 @@
 
             tr.appendChild(tdNum);
             tr.appendChild(aTitle);
-            tr.appendChild(tdAuthor);
+          //  tr.appendChild(tdAuthor);
             tr.appendChild(tdDate);
             tr.appendChild(tdViews);
 
@@ -224,8 +240,8 @@
               `#link-to-content${index}`
             );
             linkToContent.addEventListener('click', onTitleClick);
-          } else if (index === 5) {
-            const boardIndexMax = Math.ceil(lists.length / 5);
+          } else if (index === 10) {
+            const boardIndexMax = Math.ceil(lists.length / 10);
             for (let i = 0; i < boardIndexMax; i++) {
               const indexContainer = document.querySelector('#index-container');
 
@@ -250,10 +266,10 @@
       function showBoardListsNewPage(pageIndex) {
         boardTableBody.textContent = '';
         const lists = JSON.parse(localStorage.getItem(BOARDLIST_LS));
-        const limitPage = pageIndex * 5;
+        const limitPage = pageIndex * 10;
 
         lists.forEach((list, index) => {
-          if (index >= limitPage && index < limitPage + 5) {
+          if (index >= limitPage && index < limitPage + 10) {
             const tr = document.createElement('tr');
             tr.classList.add('board__content');
 
@@ -271,9 +287,9 @@
 
             aTitle.appendChild(tdTitle);
 
-            const tdAuthor = document.createElement('td');
-            tdAuthor.classList.add('board__content-column');
-            tdAuthor.textContent = list.author;
+           // const tdAuthor = document.createElement('td');
+          //  tdAuthor.classList.add('board__content-column');
+           // tdAuthor.textContent = list.author;
 
             const tdDate = document.createElement('td');
             tdDate.classList.add('board__content-column');
@@ -285,7 +301,7 @@
 
             tr.appendChild(tdNum);
             tr.appendChild(aTitle);
-            tr.appendChild(tdAuthor);
+          //  tr.appendChild(tdAuthor);
             tr.appendChild(tdDate);
             tr.appendChild(tdViews);
 
@@ -305,6 +321,7 @@
         showBoardLists();
       }
     </script>
-    <div class="footer" w3-include-html="statics/foot.html"></div>
+  <div class="footer" include-html="statics/foot.html"></div>
+  <script src="./js/importHTML.js"></script>
   </body>
 </html>
