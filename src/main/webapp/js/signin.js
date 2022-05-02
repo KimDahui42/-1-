@@ -7,15 +7,16 @@
  sign.addEventListener('click',signin);
  let password = document.getElementById("password");
  let passwordCheck = document.getElementById("passwordCheck");
+let pwcheck = false;
 
 function passwordcheck() {
 		if(password.value!= passwordCheck.value) {
 			alert("비밀번호가 동일하지 않습니다.");
-			let pwcheck=false;
+			pwcheck=false;
 		}
 		else {
 			alert("비밀번호가 일치합니다.");
-			let pwcheck= true;
+			pwcheck= true;
 		}
 	}
 

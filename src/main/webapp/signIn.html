@@ -4,15 +4,6 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="styles/style.css"/>
 <link rel="stylesheet" type="text/css" href="styles/signIn.css"/>
-<script>
-	function passwordcheck() {
-		let password = document.getElementById("password").value
-		let passwordCheck = document.getElementById("passwordCheck").value
-		if(password!= passwordCheck) {
-			alert("비밀번호가 동일하지 않습니다.");
-		}
-	}
-</script>
 <link rel="short icon" type="image/x-icon" href="images/Logo.svg">
 <title>SPIRITFY</title>
 </head>
@@ -53,5 +44,6 @@
   </main>
   <div class="footer" include-html="statics/foot.html"></div>
   <script src="./js/importHTML.js"></script>
+  <script src="./js/signin.js"></script>
 </body>
 </html>
