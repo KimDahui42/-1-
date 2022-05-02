@@ -1,8 +1,8 @@
 const GEOController = (() => {
   let lat, lon, mapFrame;
 
-  const country_lat = [37, 36, 35, 35, 63, -26];
-  const country_lon = [127, -95, 134, 103, -95, 143];
+  const country_lat = [37, 36, 35, 63, -26];
+  const country_lon = [127, -95, 134, -95, 143];
 
   const _showMap = () => {
     mapFrame.src = getURL(

@@ -63,10 +63,11 @@ input[type="number"] {
 
 button {
   font-size : 0.8em;
-  background-color : #1ed760;
+  background-color : #191414;
   color : white;
   transition-duration : 0.4s;
-  border : none;
+  border-style : solid;
+  border-color : #1db954;
 }
 
 button:hover {
