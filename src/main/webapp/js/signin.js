@@ -22,7 +22,7 @@ function passwordcheck() {
 
  function signin() {
 	if(pwcheck==true) {
-		alert("Welcome To SPIRITFY");
+		alert("Welcome To SPRITFY");
 		location.replace('index.html');
 	}
 	else {
