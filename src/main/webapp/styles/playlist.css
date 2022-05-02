@@ -20,7 +20,7 @@ main {
 canvas {
   background-color : #191414;
   position : relative;
-  top: 32vh;
+  top: 270px;
 }
 
 #song-detail-title {
@@ -114,8 +114,8 @@ button:hover {
   position : absolute;
   top : 0;
   left: 0;
-  width : 30vh;
-  height : fit-content;
+  width : 300px;
+  height : 220px;
   backface-visibility: hidden;
   border-color : #1db954;
   border-style: double;
@@ -131,4 +131,10 @@ button:hover {
 
 #prop-box {
   text-align : center;
+}
+
+.footer {
+  position : fixed;
+  bottom : 0;
+  left : 50%;
 }
