@@ -42,7 +42,6 @@ const getToken=()=>{
 const searchSong=()=>{
     pageInit();
     getToken();
-    console.log("searchSong");
     var request = new XMLHttpRequest();
     var title="q="+document.getElementById("recommendSearchBar").value;
     var type="&type=track";
@@ -74,7 +73,6 @@ const searchSong=()=>{
 const getRecommedSongs=()=>{
     var request = new XMLHttpRequest();
     var limit="limit=20";
-    console.log("getRecommend");
     const seeds={
         seed_artists:"&seed_artists="+main_song["artists"][0]["id"],
         seed_track:"&seed_tracks="+main_song["id"],
@@ -106,7 +104,6 @@ const getRecommedSongs=()=>{
 }
 
 const drawMap=(tracks)=>{
-    console.log("drawMap");
     let main_node=document.createElement('div');
     main_node.innerHTML="<div>"+main_song["name"]+"</div>";
     main_node.id=main_song["name"];
@@ -117,14 +114,14 @@ const drawMap=(tracks)=>{
         node.id=key;
         node.innerHTML='<div class="recommend_map_node_dot"></div><div class="recommend_map_node_title"><a href="'+tracks[key]+'" target="_blank">'+key+"</a></div>";
         node.className="recommend_map_node";
-        node.addEventListener('click',(e)=>moveStar(e));
+        node.addEventListener('mouseover',(e)=>nodeOver(e));
+        node.addEventListener('mouseout',(e)=>nodeOut(e));
         mapCanvas.appendChild(node);
     }
     letItStar();
 }
 
 const letItStar=()=>{
-    let container=document.getElementsByClassName("recommend_map_container")[0];
     let main_node=document.getElementById(main_song["name"]);
     let nodes=document.getElementsByClassName("recommend_map_node");
     let x=new Array(20);
@@ -132,25 +129,18 @@ const letItStar=()=>{
     main_node.style.position="absolute";
     main_node.style.top=Math.floor(window.innerHeight/3+20)+"px";
     main_node.style.left=Math.floor(window.innerWidth/2-250)+"px";
-    let mainX=main_node.style.left.replace('px','');
-    let mainY=main_node.style.top.replace('px','');
-    console.log(window.innerHeight,window.innerWidth);
     for(let i=0;i<20;i++){
         x[i]=Math.floor(Math.random()*(window.innerWidth-200));
         y[i]=Math.floor(Math.random()*(window.innerHeight-150));
         nodes[i].style.position="absolute";
         nodes[i].style.top=y[i]+"px";
         nodes[i].style.left=x[i]+"px";
-        /*let svg_line=`
-            <svg>
-                <line x1="${x[i]}" y1="${y[i]}" x2="${mainX}" y2="${mainY}" style="stroke:#ffffff;stroke-width:2;position:absolute;"/>
-            <svg>
-        `;
-        container.insertAdjacentHTML('beforeend', svg_line);*/
-        console.log(nodes[i].style.position+': '+nodes[i].style.top+','+nodes[i].style.left);
     }
 }
 
-const moveStar=(e)=>{
-
+const nodeOver=(e)=>{
+    e.target.style.background="rgba(255, 171, 255,0.4)";
+}
+const nodeOut=(e)=>{
+    e.target.style.background="";
 }

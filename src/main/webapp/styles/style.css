@@ -78,10 +78,4 @@
     text-align: center;
     padding:1.5em 0;
 }
-/*index.html*/
-.index_container{
-    display: grid;
-    background-color: lightblue;
-    grid-template-columns: repeat(2,auto);
-    grid-gap:0.5em;
-}
+

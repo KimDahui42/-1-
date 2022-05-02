@@ -1,3 +1,10 @@
+.index_container{
+    display: grid;
+    background-color: lightblue;
+    grid-template-columns: repeat(2,auto);
+    grid-gap:0.5em;
+}
+
 .slides_screen{
     width:100vw;
     height:60vw;
