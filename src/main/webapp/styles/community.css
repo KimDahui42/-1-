@@ -92,7 +92,8 @@
 
       .board__index-container {
         position: absolute;
-        bottom: 10px;
+        bottom: 50px;
+        margin-left : 30%;
       }
 
       .board__index-link {
