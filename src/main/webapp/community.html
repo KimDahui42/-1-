@@ -312,6 +312,10 @@
             const tdAuthor = document.createElement('td');
             tdAuthor.classList.add('board__content-column');
             tdAuthor.textContent = list.author;
+            
+            const tdGenre = document.createElement('td');
+            tdGenre.classList.add('board__content-column');
+            tdGenre.textContent = list.genre;
 
             const tdDate = document.createElement('td');
             tdDate.classList.add('board__content-column');
@@ -324,6 +328,7 @@
             tr.appendChild(tdNum);
             tr.appendChild(aTitle);
             tr.appendChild(tdAuthor);
+            tr.appendChild(tdGenre)
             tr.appendChild(tdDate);
             tr.appendChild(tdViews);
 
