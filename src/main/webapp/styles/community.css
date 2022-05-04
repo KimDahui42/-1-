@@ -91,9 +91,9 @@
       }
 
       .board__index-container {
-        position: absolute;
-        bottom: 50px;
-        margin-left : 20%;
+        position: relative;
+        border-style : solid;
+        border-color : #1db954;
       }
 
       .board__index-link {
